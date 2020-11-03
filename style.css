@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+    font-size: 16px;
+    background-color: burlywood;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.custom-box{
+    max-width: 600px;
+    background-color: #ffffff;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.btn{
+    padding: 15px 45px;
+    background-color: wheat;
+    color: darkgray;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.option{
+    background-color: #cccccc;
+    padding: 15px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: block;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+    position: relative;
+    overflow: hidden;
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.already-answered{
+    pointer-events: none;
+}
+
+.correct::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: greenyellow;
+    z-index: -1;
+}
+.wrong::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: coral;
+    z-index: -1;
+}
+
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+h1{
+    text-align: center;
+}
+.question-text{
+    text-align: center;
+    margin: 15px;
+    font-size: 24px;
+}
+.hide{
+    visibility: hidden;
+}
+.quiz-box{
+    margin-top: -200px;
+}
