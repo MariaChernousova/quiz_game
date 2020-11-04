@@ -1,6 +1,6 @@
 let jsonQuestions = localStorage.getItem('Data');
 let question = JSON.parse(jsonQuestions);
-console.log(question);
+// console.log(question);
 
 const questionText = document.querySelector('.question-text');
 const optionContainer = document.querySelector('.options-container');
@@ -29,11 +29,10 @@ function setAvailableQuestions(){
     for (let i = 0; i < totalQuestion; i++) {
         availableQuestions.push(question[i]);
     }
-    console.log(availableQuestions);
+    // console.log(availableQuestions);
 }
 
 function getNewQuestion(){
-    // clearStatusClass(optionContainer);
     const questionIndex = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
     // console.log(questionIndex);
     curentQuestion = questionIndex;
@@ -44,8 +43,8 @@ function getNewQuestion(){
     // console.log(questionIndex);
     // console.log(availableQuestions);
 
-    console.log(curentQuestion.content)
-    console.log(curentQuestion.correct)
+    // console.log(curentQuestion.content)
+    // console.log(curentQuestion.correct)
 
     const optionLength = curentQuestion.content.length;
     for (let i = 0; i < optionLength; i++) {
@@ -57,15 +56,6 @@ function getNewQuestion(){
         const indexRemove2 = availableOptions.indexOf(optionIndex);
         availableOptions.splice(indexRemove2,1);
 
-        // console.log(optionIndex);
-        // console.log(availableOptions);
-
-        // const option = document.createElement('button');
-        // option.innerHTML = curentQuestion.option[optionIndex];
-        // option.id = optionIndex;
-        // option.className = 'option';
-
-        // clearStatusClass(document.querySelector);
         const option = document.querySelector('.option');
         option.innerHTML = curentQuestion.content[optionIndex];
         option.id = optionIndex;
@@ -74,9 +64,7 @@ function getNewQuestion(){
         optionContainer.appendChild(option);
         option.setAttribute('onclick', 'getResult(this)');
     }
-
     questionCounter++;
-
 }
 
 function getResult(element){
@@ -94,8 +82,8 @@ function getResult(element){
         analiseResult(false);
     }
     unclickableOptions();
-    
 }
+
 function analiseResult(result){
     if(result){
         if (sumPrize === 0) {
@@ -113,11 +101,6 @@ function analiseResult(result){
 
 function quizOver(){
     quizBox.classList.add('hide');
-    // if(sumPrize>=1000000){
-    //     winBox.classList.remove('hide');
-    // } else{
-    //     resultBox.classList.remove('hide');
-    // }
     homeBox.classList.remove('hide');
 }
 
@@ -127,13 +110,8 @@ function quizResult() {
     } else {
         message.innerHTML = 'Congratulations! You won 1000000';
     }
-
 }
 
-// function clearStatusClass(element) {
-//     element.classList.remove('correct')
-//     element.classList.remove('wrong')
-//   }
 
 function unclickableOptions(){
     const optionLength = optionContainer.children.length;
@@ -156,8 +134,6 @@ function next(){
         console.log('game over');
         quizOver();
         quizResult();
-
-
     } else{
         getNewQuestion();
         clearStatusClass();
@@ -171,7 +147,6 @@ function start(){
     clearStatusClass();
     getNewQuestion()
 
-
     homeBox.classList.add('hide');
     quizBox.classList.remove('hide');
 }
@@ -183,7 +158,6 @@ function startNewGame(){
     wrongAnsvers = 0;
     sumPrize = 0;
 
-
     homeBox.classList.remove('hide');
     quizBox.classList.add('hide');
 }
@@ -191,8 +165,6 @@ function startNewGame(){
 window.onload = function(){
     setAvailableQuestions();
     getNewQuestion();
-    // quizResult()
-    // console.log('sumriseAtTheEnd' + sumPrize);
 }
 
 
